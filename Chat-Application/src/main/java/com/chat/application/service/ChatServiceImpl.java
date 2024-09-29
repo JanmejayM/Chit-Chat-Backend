@@ -47,13 +47,14 @@ public class ChatServiceImpl implements ChatService{
 	}
 	
 	public Integer getMaxPage(long chatRoomId) {
-		double totalRecord=chatRepository.findAll().stream().filter(x->x.getChatRoom().getId()==chatRoomId).count();
+		double totalRecord=chatRepository.findAllByChatRoomId(chatRoomId).size();
 		int pageSize=10;
 		
 		System.out.println(totalRecord);
 		double maxPageNumber=Math.ceil(totalRecord/(double)pageSize);
 		
-		if(totalRecord%pageSize==0|| totalRecord%pageSize==pageSize-1) {
+		
+		if(totalRecord%pageSize==0) {
 			maxPageNumber++;
 		}
 		System.out.println(maxPageNumber);
