@@ -35,7 +35,8 @@ public class ChatServiceImpl implements ChatService{
 	
 	public List<Chat>getChat(int pageSize,int pageNo,long chatRoomId)
 	{
-		return chatRepository.findAll(PageRequest.of(pageNo,pageSize)).stream().filter(x->x.getChatRoom().getId()==chatRoomId).collect(Collectors.toList());
+		
+		return chatRepository.findAllByChatRoomId(chatRoomId,PageRequest.of(pageNo,pageSize));
 	}
 	
 	public List<Chat>getRecentChat(long chatRoomId)

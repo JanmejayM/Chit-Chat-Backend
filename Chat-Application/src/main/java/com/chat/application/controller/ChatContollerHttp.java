@@ -22,22 +22,24 @@ public class ChatContollerHttp {
 	
 	
 	@GetMapping("/getMaxPage")
-	public Integer getMaxPage(@RequestParam(defaultValue = "1") long chatRoomId)
+	public Integer getMaxPage(@RequestParam long chatRoomId)
 	{
 		return chatService.getMaxPage(chatRoomId);
 	}
 	
 	@GetMapping("/allMessage")
-	public List<Chat> getAllMessage(@RequestParam(defaultValue = "1") long chatRoomId)
+	public List<Chat> getAllMessage(@RequestParam long chatRoomId)
 	{
 		return chatService.getRecentChat(chatRoomId);
 	}
 	
 	@GetMapping("/loadMessage")
-	public List<Chat> getAllMessagePage(@RequestParam int pageSize,@RequestParam int pageNo,@RequestParam(defaultValue = "1") long chatRoomId,@RequestParam int maxPage)
+	public List<Chat> getAllMessagePage(@RequestParam int pageSize,@RequestParam int pageNo,@RequestParam long chatRoomId,@RequestParam int maxPage)
 	{
 		//int maxPage=chatService.getMaxPage(chatRoomId);
-		return chatService.getChat(pageSize,maxPage-pageNo,chatRoomId);
+		List<Chat>res= chatService.getChat(pageSize,maxPage-pageNo,chatRoomId);
+		//System.out.println(res);
+		return res;
 	}
 
 }
