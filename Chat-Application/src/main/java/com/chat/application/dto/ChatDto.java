@@ -4,6 +4,7 @@ public class ChatDto {
 	
     private Long userid;
 	
+    private String username;
 	
 	private String message;
 	
@@ -31,6 +32,14 @@ public class ChatDto {
 
 	public void setChatRoomId(Long chatRoomId) {
 		this.chatRoomId = chatRoomId;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public ChatDto(Long userid, String message, Long chatRoomId) {

@@ -53,10 +53,7 @@ public class ChatServiceImpl implements ChatService{
 		System.out.println(totalRecord);
 		double maxPageNumber=Math.ceil(totalRecord/(double)pageSize);
 		
-		
-		if(totalRecord%pageSize==0) {
-			maxPageNumber++;
-		}
+	
 		System.out.println(maxPageNumber);
 		
 		return (int)maxPageNumber;
