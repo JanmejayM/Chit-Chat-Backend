@@ -51,5 +51,10 @@ public class ChatRoomController {
 
 		return chatRoomService.getAllChatRooms();
 	}
+	
+	@GetMapping("/chatRoomName/{roomId}")
+	public ChatRoomDto getChatRoomName(@PathVariable long roomId) {
+		return chatRoomService.getChatRoomDetails(roomId);
+	}
 
 }

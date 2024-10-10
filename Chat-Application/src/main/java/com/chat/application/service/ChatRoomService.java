@@ -3,6 +3,7 @@ package com.chat.application.service;
 import java.util.List;
 import java.util.Set;
 
+import com.chat.application.dto.ChatRoomDto;
 import com.chat.application.model.ChatRoom;
 
 public interface ChatRoomService {
@@ -13,4 +14,6 @@ public interface ChatRoomService {
 	public List<ChatRoom> getChatRoomsOfUser(long userId);
 
 	public List<ChatRoom> getAllChatRooms();
+	
+	public ChatRoomDto getChatRoomDetails(long roomId);
 }
