@@ -1,12 +1,14 @@
 package com.chat.application.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.chat.application.dto.ChatRoomDto;
 import com.chat.application.model.ChatRoom;
 import com.chat.application.repository.ChatRoomRepository;
 
@@ -58,6 +60,18 @@ public class ChatRoomServiceImpl implements ChatRoomService{
 	
 	public List<ChatRoom> getAllChatRooms(){
 		return chatRoomRepository.findAll();
+	}
+
+	@Override
+	public ChatRoomDto getChatRoomDetails(long roomId) {
+		// TODO Auto-generated method stub
+		Optional<ChatRoom>chatRoom= chatRoomRepository.findById(roomId);
+		ChatRoomDto chatRoomDto=new ChatRoomDto();
+		if(chatRoom.isPresent()) {
+			chatRoomDto.setChatRoomId(chatRoom.get().getId());
+			chatRoomDto.setChatRoomName(chatRoom.get().getRoomName());
+		}
+		return chatRoomDto;
 	}
 
 }
